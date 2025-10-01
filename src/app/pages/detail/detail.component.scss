@@ -1,0 +1,81 @@
+.subtitle-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 55px;
+    width: 100%;
+}
+
+.subtitle-container app-subtitle {
+    flex: 1 1 0;
+    max-width: 217px;
+    text-align: center;
+}
+
+.subtitle-container app-subtitle:first-child {
+    text-align: end;
+}
+
+.subtitle-container app-subtitle:last-child {
+    text-align: start;
+}
+
+.chartLine {
+    display: flex;
+    justify-content: center;
+    width: 90vw;
+    max-width: 800px;
+    max-height: 800px;
+    margin: 50px auto 0 auto;
+    font-size: 24px !important;
+    color: grey;
+}
+
+::ng-deep ngx-charts-line-chart text {
+    font-family: 'Arial, sans-serif';
+    font-size: 20px !important;
+}
+
+::ng-deep g[ngx-charts-axis-label] text {
+    fill: grey !important;
+    font-size: 28px !important;
+}
+
+@media (max-width: 1024px) {
+    ::ng-deep ngx-charts-line-chart text {
+        font-family: 'Arial, sans-serif';
+        font-size: 16px !important;
+    }
+
+    ::ng-deep g[ngx-charts-axis-label] text {
+        fill: grey !important;
+        font-size: 20px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    ::ng-deep ngx-charts-line-chart text {
+        font-family: 'Arial, sans-serif';
+        font-size: 14px !important;
+    }
+
+    ::ng-deep g[ngx-charts-axis-label] text {
+        fill: grey !important;
+        font-size: 18px !important;
+    }
+
+    .chartPie {
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .subtitle-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .subtitle-container app-subtitle {
+        max-width: 100%;
+    }
+}

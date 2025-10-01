@@ -1,0 +1,17 @@
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn-container button {
+    display: inline-flex;
+    align-items: center;
+    background: #04838F;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 0;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}

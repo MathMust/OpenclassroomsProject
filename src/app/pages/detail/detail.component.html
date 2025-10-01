@@ -1,0 +1,23 @@
+<ng-container *ngIf="olympic$ | async as state">
+    <app-spinner [loading]="state.loading"></app-spinner>
+    <app-error-message [message]="state.error"></app-error-message>
+
+    <ng-container *ngIf="state.data">
+        <app-title [title]="title"></app-title>
+
+        <div class="subtitle-container">
+            <app-subtitle [title]="titleNbEntries" [data]="state.data.nbEntries"></app-subtitle>
+            <app-subtitle [title]="titleTotalNbMedals" [data]="state.data.totalNbMedals"></app-subtitle>
+            <app-subtitle [title]="titleTotalNbAthletes" [data]="state.data.totalNbAthletes"></app-subtitle>
+        </div>
+
+        <div class="chartLine">
+            <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="chartData" [xAxis]="true"
+                [yAxis]="true" [showXAxisLabel]="true" [showYAxisLabel]="false" [xAxisLabel]="'Dates'"
+                [gradient]="false" [tooltipDisabled]="true" [autoScale]="true" [yScaleMax]="getMaxValue()"
+                [yScaleMin]="getMinValue()">
+            </ngx-charts-line-chart>
+        </div>
+    </ng-container>
+    <app-btn-return-home></app-btn-return-home>
+</ng-container>

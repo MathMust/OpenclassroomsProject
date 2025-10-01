@@ -1,3 +1,22 @@
-<h2>Olympic games app</h2>
-<hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p>
+<ng-container *ngIf="homeState$ | async as state">
+  <app-spinner [loading]="state.loading"></app-spinner>
+  <app-error-message [message]="state.error"></app-error-message>
+  <app-title [title]="title"></app-title>
+
+  <div class="subtitle-container">
+    <app-subtitle [title]="titleNbJos" [data]="state.nbJos"></app-subtitle>
+    <app-subtitle [title]="titleNbCountries" [data]="state.nbCountries"></app-subtitle>
+  </div>
+
+  <div class="chartPie">
+    <ngx-charts-pie-chart [view]="view" [scheme]="colorScheme" [results]="state.data" [legend]="false" [labels]="true"
+      [doughnut]="false" [trimLabels]="false" [tooltipDisabled]="true" (activate)="onActivate($event)"
+      (deactivate)="onDeactivate()" (select)="onSelect($event)">
+    </ngx-charts-pie-chart>
+  </div>
+
+  <div class="tooltip-content" *ngIf="tooltipVisible" [ngStyle]="{ top: tooltipY + 'px', left: tooltipX + 'px' }">
+    {{ tooltipText }}
+    <img class="img-medal" [src]="'assets/icons/medal.svg'" /> {{ tooltipNbMedal }}
+  </div>
+</ng-container>

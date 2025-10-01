@@ -1,0 +1,94 @@
+.chartPie {
+    display: flex;
+    justify-content: center;
+    width: 90vw;
+    max-width: 800px;
+    max-height: 800px;
+    margin: 0 auto;
+}
+
+.tooltip-content {
+    position: fixed;
+    background: #04838F;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    pointer-events: none;
+    text-align: center;
+    white-space: pre-line;
+    font-size: 20px;
+}
+
+.tooltip-content::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border-width: 8px;
+    border-style: solid;
+    border-color: #00838f;
+    border-top-left-radius: 50px;
+}
+
+.img-medal {
+    vertical-align: text-bottom;
+    width: 20px;
+    height: auto;
+}
+
+::ng-deep ngx-charts-pie-chart text {
+    font-family: 'Arial, sans-serif';
+    font-size: 20px !important;
+}
+
+.subtitle-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 55px;
+    width: 100%;
+}
+
+.subtitle-container app-subtitle {
+    flex: 1 1 0;
+    max-width: 200px;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    ::ng-deep ngx-charts-pie-chart text {
+        font-size: 16px !important;
+    }
+
+    .tooltip-content {
+        font-size: 16px;
+        padding: 4px 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    ::ng-deep ngx-charts-pie-chart text {
+        font-size: 14px !important;
+    }
+
+    .chartPie {
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .tooltip-content {
+        font-size: 14px;
+        padding: 3px 6px;
+    }
+
+    .subtitle-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .subtitle-container app-subtitle {
+        max-width: 100%;
+    }
+}

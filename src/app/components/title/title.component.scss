@@ -1,0 +1,26 @@
+.title {
+    position: absolute;
+    background: #04838F;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    pointer-events: none;
+    text-align: center;
+    white-space: pre-line;
+    font-size: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 20px;
+    }
+}

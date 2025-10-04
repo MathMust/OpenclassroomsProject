@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { TitleComponent } from '../../components/title/title.component';
 import { SubtitleComponent } from '../../components/subtitle/subtitle.component';
@@ -27,6 +27,8 @@ import { BtnReturnHomeComponent } from "src/app/components/btn-return-home/btn-r
 })
 export class DetailComponent implements OnInit {
 
+  private destroy$ = new Subject<void>();
+
   country!: string;
   olympic$!: Observable<DataState<OlympicSummary | null>>;
   chartData: { name: string; series: { name: string; value: number }[] }[] = [];
@@ -48,7 +50,7 @@ export class DetailComponent implements OnInit {
     this.country = this.route.snapshot.params['country'];
     this.olympic$ = this.olympicService.getOlympicByCountry(this.country);
 
-    this.olympic$.subscribe(state => {
+    this.olympic$.pipe(takeUntil(this.destroy$)).subscribe(state => {
       if (state.data) {
         this.chartData = [{
           name: state.data.country,
@@ -94,6 +96,11 @@ export class DetailComponent implements OnInit {
       });
     });
     return min - 2;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }

@@ -10,6 +10,7 @@ import { ErrorMessageComponent } from "src/app/components/error-message/error-me
 import { DataState } from 'src/app/core/models/DataState';
 import { OlympicSummary } from 'src/app/core/models/OlympicSummary';
 import { BtnReturnHomeComponent } from "src/app/components/btn-return-home/btn-return-home.component";
+import { DataChartLine } from 'src/app/core/models/DataChartLine';
 
 @Component({
   selector: 'app-detail',
@@ -31,8 +32,7 @@ export class DetailComponent implements OnInit {
 
   country!: string;
   olympic$!: Observable<DataState<OlympicSummary | null>>;
-  chartData: { name: string; series: { name: string; value: number }[] }[] = [];
-  title: string = "Name of the country";
+  chartData: DataChartLine[] = [];
   titleNbEntries: string = "Number of entries";
   titleTotalNbMedals: string = "Total number medals";
   titleTotalNbAthletes: string = "Total number of athletes";
@@ -80,8 +80,8 @@ export class DetailComponent implements OnInit {
 
   getMaxValue(): number {
     let max: number = 0;
-    this.chartData.forEach(serie => {
-      serie.series.forEach(point => {
+    this.chartData.forEach(data => {
+      data.series.forEach(point => {
         if (point.value > max) max = point.value;
       });
     });
@@ -90,8 +90,8 @@ export class DetailComponent implements OnInit {
 
   getMinValue(): number {
     let min: number = Number.MAX_VALUE;
-    this.chartData.forEach(serie => {
-      serie.series.forEach(point => {
+    this.chartData.forEach(data => {
+      data.series.forEach(point => {
         if (point.value < min) min = point.value;
       });
     });

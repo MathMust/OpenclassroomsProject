@@ -3,7 +3,7 @@
     <app-error-message [message]="state.error"></app-error-message>
 
     <ng-container *ngIf="state.data">
-        <app-title [title]="title"></app-title>
+        <app-title [title]="state.data.country"></app-title>
 
         <div class="subtitle-container">
             <app-subtitle [title]="titleNbEntries" [data]="state.data.nbEntries"></app-subtitle>

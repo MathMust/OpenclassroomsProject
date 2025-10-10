@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Color, NgxChartsModule, ScaleType } from '@swimlane/ngx-charts';
-import { DataPie } from 'src/app/core/models/DataPie';
+import { DataChart } from 'src/app/core/models/DataChart';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { SubtitleComponent } from 'src/app/components/subtitle/subtitle.component';
 import { TitleComponent } from 'src/app/components/title/title.component';
@@ -14,7 +14,7 @@ import { map } from 'rxjs/operators';
 interface HomeState {
   loading: boolean;
   error: string | null;
-  data: DataPie[];
+  data: DataChart[];
   nbJos: number;
   nbCountries: number;
 }

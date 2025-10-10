@@ -1,4 +1,4 @@
-export interface DataPie {
+export interface DataChart {
   name: string;
   value: number;
 }
